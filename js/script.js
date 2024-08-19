@@ -24,4 +24,50 @@ langBox.addEventListener("click" , function(){
 //langageLi에 transition 기능
 setTimeout(function(){
     languageLi.computedStyleMap.transition = "all 0.2s"}, 500)
+
+//스크롤 기능
+let scy = 0
+let scActive = 50
+scy = this.window.document.documentElement.scrollTop
+console.log(scy);
+
+let header = this.document.querySelector(".header")
+let logoW = this.document.querySelector(".logo-w")
+let logoG = this.document.querySelector(".logo-g")
+
+// 새로고침 했을 때
+if (scy > scActive) {
+    header.classList.add("header-active");
+    logoW.style.display = "none";
+    logoG.style.display = "block";
+  }
+  
+// 스크롤됐을 때 바뀜
+this.window.addEventListener("scroll", function () {
+    scy = this.window.document.documentElement.scrollTop;
+    if (scy > scActive) {
+      header.classList.add("header-active");
+      logoW.style.display = "none";
+      logoG.style.display = "block";
+    }
+    else{
+        header.classList.remove("header-active");
+        logoW.style.display = "block";
+        logoG.style.display = "none";
+    }
+  });
+// 호버됐을 때 바뀜
+header.addEventListener("mouseenter" , function(){
+    header.classList.add("header-active");
+    logoW.style.display = "none";
+    logoG.style.display = "block";
 })
+header.addEventListener("mouseleave" , function(){
+    header.classList.remove("header-active");
+    logoW.style.display = "block";
+    logoG.style.display = "none";
+})
+
+
+})
+
